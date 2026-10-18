@@ -23,7 +23,7 @@ Numbers vary by machine and bundler, so measure in your own app. Pele's text mea
 pnpm add streamdown-pele streamdown
 npm install streamdown-pele streamdown
 yarn add streamdown-pele streamdown
-bun install streamdown-pele streamdown
+bun add streamdown-pele streamdown
 ```
 
 ## Usage
