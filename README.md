@@ -4,7 +4,7 @@ A [Streamdown](https://streamdown.ai) plugin that renders `mermaid` code blocks 
 
 This package is a adapter for Steamdown. All parsing, layout, and SVG output come from [Pele](https://github.com/obsidianmd/pele) by [kepano](https://github.com/kepano).
 
-## Why use it
+## Comparison
 
 Streamdown's default `@streamdown/mermaid` plugin runs Mermaid.js. Pele is much smaller and renders synchronously. In our measurements in Chromium (gzip, diagrams loaded on demand):
 
@@ -14,8 +14,6 @@ Streamdown's default `@streamdown/mermaid` plugin runs Mermaid.js. Pele is much 
 | Flowchart, sequence, class, state, and pie loaded | about 419 kB          | about 91 kB       |
 | Every diagram type loaded                         | about 863 kB          | about 270 kB      |
 | Flowchart render, repeated                        | about 37 ms           | about 1.2 ms      |
-
-Numbers vary by machine and bundler, so measure in your own app. Pele's text measurement is an estimate rather than a DOM measurement, so complex labels can wrap differently from Mermaid.js.
 
 ## Install
 
@@ -67,12 +65,6 @@ Pele reads its colors and fonts from CSS variables, so diagrams follow your them
 ```
 
 Charts also use `--pele-series-1` through `--pele-series-8`.
-
-## Behavior notes
-
-- Diagram types load on demand through `pele/lazy`, so only the types a page uses are downloaded.
-- Streamdown passes Mermaid.js configuration to `getMermaid()`. Pele has its own options, so that configuration is ignored.
-- Invalid or incomplete syntax throws a `PeleError`, which Streamdown handles the same way it handles Mermaid.js errors. `PeleError` is re-exported from this package.
 
 ## License
 
