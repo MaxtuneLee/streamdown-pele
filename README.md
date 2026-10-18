@@ -1,4 +1,4 @@
-# streamdown-pele
+# @maxtune/streamdown-pele
 
 A [Streamdown](https://streamdown.ai) plugin that renders `mermaid` code blocks with [Pele](https://pele.run).
 
@@ -8,7 +8,7 @@ This package is a adapter for Steamdown. All parsing, layout, and SVG output com
 
 Streamdown's default `@streamdown/mermaid` plugin runs Mermaid.js. Pele is much smaller and renders synchronously. In our measurements in Chromium (gzip, diagrams loaded on demand):
 
-|                                                   | `@streamdown/mermaid` | `streamdown-pele` |
+|                                                   | `@streamdown/mermaid` | `@maxtune/streamdown-pele` |
 | ------------------------------------------------- | --------------------- | ----------------- |
 | First load                                        | about 160 kB          | about 10 kB       |
 | Flowchart, sequence, class, state, and pie loaded | about 419 kB          | about 91 kB       |
@@ -20,17 +20,17 @@ Numbers vary by machine and bundler, so measure in your own app. Pele's text mea
 ## Install
 
 ```sh
-pnpm add streamdown-pele streamdown
-npm install streamdown-pele streamdown
-yarn add streamdown-pele streamdown
-bun add streamdown-pele streamdown
+pnpm add @maxtune/streamdown-pele streamdown
+npm install @maxtune/streamdown-pele streamdown
+yarn add @maxtune/streamdown-pele streamdown
+bun add @maxtune/streamdown-pele streamdown
 ```
 
 ## Usage
 
 ```tsx
 import { Streamdown } from "streamdown";
-import { pele } from "streamdown-pele";
+import { pele } from "@maxtune/streamdown-pele";
 
 export function Message({ children }: { children: string }) {
   return <Streamdown plugins={{ mermaid: pele }}>{children}</Streamdown>;
@@ -40,7 +40,7 @@ export function Message({ children }: { children: string }) {
 To pass Pele render options, create the plugin yourself:
 
 ```ts
-import { createPelePlugin } from "streamdown-pele";
+import { createPelePlugin } from "@maxtune/streamdown-pele";
 
 const mermaid = createPelePlugin({
   options: { fontSize: 14, responsive: true },
